@@ -19,10 +19,8 @@ public class CurencyController {
     }
 
     @RequestMapping(value = "/curency",method = RequestMethod.POST)
-    public ModelAndView convertCurrency(@RequestParam("usd") double usd,
-                                        @RequestParam("rate") double rate,
-        ModelAndView modelAndView) { double vnd=iService.convert(usd,rate);
-
+    public ModelAndView convertCurrency(@RequestParam("usd") double usd,@RequestParam("rate") double rate,ModelAndView modelAndView) {
+        double vnd=iService.convert(usd,rate);
         modelAndView.addObject("usd",usd);
         modelAndView.addObject("rate",rate);
         modelAndView.addObject("vnd",vnd);
