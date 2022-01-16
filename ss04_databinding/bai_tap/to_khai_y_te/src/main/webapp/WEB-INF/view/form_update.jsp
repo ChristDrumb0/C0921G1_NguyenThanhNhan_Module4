@@ -18,7 +18,7 @@
     </div>
     <%--    /body:--%>
     <div class="row mt-5" style="display: block">
-        <form:form modelAttribute="medicalDeclaration" method="post">
+        <form:form modelAttribute="medicalDeclaration" action="save_infor" method="post">
 
             <%--            HỌ tên (Ghi chữ IN HOA) --%>
             <div class="form-group">
@@ -55,7 +55,7 @@
             <%--           Thông tin đi lại: radiobuttons--%>
             <div class="form-check form-check-inline" style="display: block">
                 <label><form:label path="transportation">Thông tin đi lại</form:label></label>
-                <p><form:radiobuttons path="transportation" items="${transportations}"/></p>
+                <p><form:radiobuttons path="transportation" items="${transportation}"/></p>
             </div>
             <%--           Số hiệu phương tiện - Số ghế--%>
 

@@ -104,7 +104,7 @@
             </div>
             <div class="form-group col-md-4">
                 <label>Phường-xã</label>
-                <input value="${info.town}" class="form-control" readonly="true"/>
+                <input value="${info.ward}" class="form-control" readonly="true"/>
             </div>
         </div>
 
@@ -131,7 +131,7 @@
             <%--            Triệu chứng--%>
         <div class="form-check form-check-inline" style="display: block">
             <label>Trong vòng 14 ngày qua, Anh chị có xuất hiện triệu chứng : </label>
-            <c:forEach items="${info.diseaseSymptoms}" var="item">
+            <c:forEach items="${info.symptoms}" var="item">
                 <span>${item}</span>
             </c:forEach>
         </div>
@@ -139,16 +139,15 @@
             <%--           Lịch sử phơi nhiễm--%>
         <div class="form-check form-check-inline" style="display: block">
             <label class="col-md-12">Lịch sử phơi nhiễm: Trong vòng 14 ngày qua, Anh chị có</label>
-            <c:if test='${(info.exposureHistory).equals("")}'>
+            <c:if test='${(info.historyExposure).equals("")}'>
                 Không
             </c:if>
-            <c:if test='${!(info.exposureHistory).equals("")}'>
-                <c:forEach items="${info.exposureHistory}" var="item">
+            <c:if test='${!(info.historyExposure).equals("")}'>
+                <c:forEach items="${info.historyExposure}" var="item">
                     <span>${item}</span>
                 </c:forEach>
             </c:if>
 
-                <%--                <form:checkboxes path="exposureHistory" items="${exposureHistory}"/>--%>
         </div>
 
         <div class="col-md-12 mt-5">

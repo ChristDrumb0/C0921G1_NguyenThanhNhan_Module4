@@ -40,7 +40,7 @@ public class MedicalDeclarationController {
 
         String[] districts = {"Hai Chau","Ngu Hanh Son","Hai Ba Trung","Hoan Kiem","District 1","Thu Duc","Buon Me Thuot"};
         mav.addObject("districts",districts);
-//      check town
+
         String[] ward = {"Hoa Cuong","Khue Trung","Hoa Hai","Cong Vi","Kim Ma", "Giang Vo","Ben Nghe","Ben Thanh","Co Giang"};
         mav.addObject("ward",ward);
 
@@ -54,11 +54,11 @@ public class MedicalDeclarationController {
     @PostMapping(value = "/save_infor")
     public String saveMedicalDeclaration(@ModelAttribute MedicalDeclaration medicalDeclaration,
                                          RedirectAttributes redirectAttributes) {
-        //goi ham
+
         iService.saveInfor(medicalDeclaration);
         //Hien thong bao:
         redirectAttributes.addFlashAttribute("message","Gửi tờ khai thành công!");
         //chuye huong ve trang list:
-        return "redirect:/index";
+        return "redirect:/show_form";
     }
 }
