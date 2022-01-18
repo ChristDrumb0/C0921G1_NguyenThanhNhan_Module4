@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Customer List</title>
+  <style>
+    table {
+      border: 1px solid #000;
+    }
+
+    th, td {
+      border: 1px dotted #555;
+    }
+  </style>
+</head>
+<body>
+<th:block th:if="${messager}">
+  <p th:text="${messager}"></p>
+</th:block>
+<!--There are <span th:text="${music.size()}"></span> music(s).-->
+<a href="/musics/create-music">Create new Music</a>
+<table>
+  <caption>Customers List</caption>
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Song</th>
+    <th>Performer</th>
+    <th>Type</th>
+    <th>Link</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="c : ${music}">
+    <td th:text="${c.id + 1}"></td>
+    <td>
+      <a th:href="@{/musics/info/{id}(id=${c.id})}" th:text="${c.name}"></a>
+    </td>
+    <td th:text="${c.performer}"></td>
+    <td th:text="${c.type}"></td>
+    <td >
+      <a th:href="${c.link}" th:text="${c.link}"></a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

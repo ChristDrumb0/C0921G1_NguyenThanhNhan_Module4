@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Customer Information</title>
+</head>
+<body>
+<form action="/musics/update" method="post">
+  <fieldset>
+    <legend>Music Information</legend>
+    <input type="hidden" name="id" th:value="${music.id}">
+    <table>
+      <tr>
+        <td>Id</td>
+        <td th:text="${music.id}"></td>
+      </tr>
+      <tr>
+        <td>Name</td>
+        <td>
+          <input type="text" name="name" th:value="${music.name}">
+        </td>
+      </tr>
+      <tr>
+        <td>Performer</td>
+        <td>
+          <input type="text" name="email" th:value="${music.performer}">
+        </td>
+      </tr>
+      <tr>
+        <td>Type</td>
+        <td>
+          <input type="text" name="address" th:value="${music.type}">
+        </td>
+      </tr>
+      <tr>
+        <td>Link</td>
+        <td>
+          <input type="text" name="address" th:value="${music.link}">
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <input type="submit" value="Update">
+        </td>
+      </tr>
+    </table>
+  </fieldset>
+</form>
+<a href="/musics">Back to list</a>.
+</body>
+</html>
