@@ -22,7 +22,7 @@ public interface IBlogService {
     Page<Blog> findByCategory(Long category_id,Pageable pageable);
 
     //tim kiem theo title & category
-    Page<Blog> findBlogByTitleContainingAndCategory_Id(String title, Long category_id, Pageable pageable);
+    Page<Blog> findBlogByTitleContainingAndCategoryId(String title, Long category_id, Pageable pageable);
 
 
     void save(Blog blog);

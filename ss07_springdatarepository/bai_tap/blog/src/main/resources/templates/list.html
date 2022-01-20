@@ -18,21 +18,23 @@
                     <i class="bi bi-search text-white" ></i>
                 </button>
 
+                <select name="cate_filter" onchange="this.form.submit()">
+                    <option disabled selected>Please chose Category</option>
+                    <th:block th:each="category: ${categoryList}">
+
+                        <option th:value="${category.id}" th:text="${category.name}"></option>
+
+                    </th:block>
+                </select>
+
             </form>
 <!--        </div>-->
 
         <!--Filter by Category-->
 <!--        <div class="row">-->
-        <form action="/blog" class="form-inline my-2 my-lg-0">
-            <select name="cate_filter" onchange="this.form.submit()">
-                <option disabled selected>Please chose Category</option>
-                <th:block th:each="category: ${categoryList}">
-
-                    <option th:value="${category.id}" th:text="${category.name}"></option>
-
-                </th:block>
-            </select>
-        </form>
+<!--        <form action="/blog" class="form-inline my-2 my-lg-0">-->
+<!--            -->
+<!--        </form>-->
 <!--        </div>-->
     </div>
     <div class="container">

@@ -41,7 +41,7 @@ public class BlogServiceImp implements IBlogService {
 
     //tim kiem theo title & category
     @Override
-    public Page<Blog> findBlogByTitleContainingAndCategory_Id(String title, Long category_id, Pageable pageable) {
+    public Page<Blog> findBlogByTitleContainingAndCategoryId(String title, Long category_id, Pageable pageable) {
         return repository.findBlogByTitleContainingAndCategory_Id(title, category_id, pageable);
     }
 

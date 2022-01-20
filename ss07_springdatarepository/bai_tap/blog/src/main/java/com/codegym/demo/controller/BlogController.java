@@ -56,7 +56,7 @@ public class BlogController {
             else{
                 model.addAttribute("cate_filter", cate_filter.get());
                 model.addAttribute("title_search", title_search.get());
-                model.addAttribute("blogList",service.findBlogByTitleContainingAndCategory_Id(title_search.get(),cate_filter.get(),pageable));
+                model.addAttribute("blogList",service.findBlogByTitleContainingAndCategoryId(title_search.get(),cate_filter.get(),pageable));
             }
         }
 
