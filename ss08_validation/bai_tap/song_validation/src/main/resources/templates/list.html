@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+    <meta charset="UTF-8">
+    <title>Show List</title>
+</head>
+<body>
+</div>
+<div class="container">
+    <button class="form-inline my-2 my-lg-0" style="background-color:deeppink">
+        <a th:href="@{/song/create}" class="text text-white">
+            + Add new song
+        </a>
+    </button>
+</div>
+
+<div class="notify">
+    <!--        <div th:if="#{message}">-->
+    <span style="color: cornflowerblue" th:text="${messageCreate}"></span>
+    <span style="color: green" th:text="${messagesEdit}"></span>
+    <span style="color: red" th:text="${messagesDelete}"></span>
+    <!--        </div>-->
+</div>
+</div>
+
+<div class="container">
+    <!--list Blog-->
+    <div>
+        <table id="songs" class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">ID</th>
+                <th scope="col">Song Name</th>
+                <th scope="col">Song Type</th>
+                <th scope="col">Action</th>
+
+            </tr>
+            </thead>
+            <tbody class="">
+            <tr th:each="item,status : ${songList}">
+
+                <th scope="row" th:text="${(status.index + 1)}"></th>
+                <td th:text="${item.getId()}"></td>
+                <td>
+                    <a th:href="@{/song/{id}/update(id=${item.getId()})}" th:text="${item.getName()}"></a>
+                </td>
+                <td th:text="${item.getType()}"></td>
+                <td>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn text-primary" data-toggle="modal"
+                            th:data-target="'#modal'+${item.getId()}">
+                        <i class="bi bi-trash"></i>
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" th:id="'modal'+${item.getId()}" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalLabel1" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel1">Modal title</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body"
+                                     th:text="'Are you sure you want to delete song `'+${item.getName()}+ '` ?????'">
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-danger"><a class="text-white"
+                                                                                    th:href="@{/song/{id}/delete(id=${item.getId()})}">Delete</a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <!--phan trang-->
+    <div>
+        <button style="background-color: deeppink"><a th:href="@{'/song'(page=${songList.number -1})}" th:if="${songList.hasPrevious()}" class="text-white" ><i class="bi bi-arrow-left-square-fill"></i></a></button>
+<!--        , title_search=${title_search}, cate_filter=${cate_filter} -->
+
+        <span th:text="${songList.number+1}"></span> / <span th:text="${songList.totalPages}"></span>
+        <button style="background-color: deeppink"> <a th:href="@{'/song'(page=${songList.number +1})}" th:if="${songList.hasNext()}" class="text-white" ><i class="bi bi-arrow-right-square-fill" ></i></a></button>
+<!--        , title_search=${title_search}, cate_filter=${cate_filter} )}"-->
+
+    </div>
+</div>
+
+
+<footer th:replace="/layout :: footer"></footer>
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+
+</body>
+</html>
