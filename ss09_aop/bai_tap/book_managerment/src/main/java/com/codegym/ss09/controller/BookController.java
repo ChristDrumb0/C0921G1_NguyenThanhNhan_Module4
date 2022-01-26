@@ -21,16 +21,10 @@ public class BookController {
         return new ModelAndView("index", "bookList", iBookService.findAll());
     }
 
+    //borrow
     @GetMapping("/borrow/{idBook}")
     public ModelAndView borrowForm(@PathVariable Integer idBook) {
-//        //tạo code random
-//        Code codeObj = new Code();
-//        //set code --> hiển thị mã cho client
-//        codeObj.setCode((long) (Math.random() * (99999 - 10000) + 10000));
         Book bookObj = iBookService.findById(idBook);
-//        //Set book cho table code
-//        codeObj.setBook(bookObj);
-
         return new ModelAndView("borrow", "bookObj", bookObj);
     }
 
@@ -41,10 +35,7 @@ public class BookController {
         if (bookObj.getQuantity() == 0) {
             throw new BookQuantityZero();
         } else {
-            //lưu code (tạo mới):
-//            iCodeService.save(codeObj);
             //giam SL đi 1:
-//            Book bookObj = codeObj.getBook();
             bookObj.setQuantity(bookObj.getQuantity() - 1);
             //lưu book lại
             iBookService.save(bookObj);
@@ -62,8 +53,21 @@ public class BookController {
     //trả sách
     @GetMapping("/give_back/{idBook}")
     public ModelAndView giveBackForm(@PathVariable Integer idBook) {
-        Book bookObj = new Book();
+        Book bookObj = iBookService.findById(idBook);
         return new ModelAndView("give_back", "bookObj", bookObj);
+    }
+    @PostMapping("/give_back")
+    public String giveBack(@ModelAttribute Book bookObj,
+                           RedirectAttributes redirectAttributes) {
+            //tăng SL đi 1:
+            bookObj.setQuantity(bookObj.getQuantity() + 1);
+            //lưu sách lại
+            iBookService.save(bookObj);
+
+            //response
+            redirectAttributes.addFlashAttribute("message", "Bạn đã trả sách: " + bookObj.getBookName());
+            return "redirect:";
+//        }
     }
 
 }
