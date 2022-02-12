@@ -1,10 +1,10 @@
-package com.codegym.blog;
+package com.codegym.practice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BlogApplicationTests {
+class PracticeApplicationTests {
 
     @Test
     void contextLoads() {
