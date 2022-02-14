@@ -42,4 +42,20 @@ public class SmartphoneRestController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    //Cap nhat object
+    @PutMapping("/{id}")
+    public ResponseEntity<Smartphone> editById(@PathVariable Long id, @RequestBody Smartphone smartphone) {
+        Smartphone smartphoneUpdate = smartphoneService.findById(id).get();
+
+        if (smartphoneUpdate == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        smartphoneUpdate.setModel(smartphone.getModel());
+        smartphoneUpdate.setPrice(smartphone.getPrice());
+        smartphoneUpdate.setProducer(smartphone.getProducer());
+
+        this.smartphoneService.save(smartphoneUpdate);
+        return new ResponseEntity<>(smartphoneUpdate, HttpStatus.OK);
+    }
+
 }
