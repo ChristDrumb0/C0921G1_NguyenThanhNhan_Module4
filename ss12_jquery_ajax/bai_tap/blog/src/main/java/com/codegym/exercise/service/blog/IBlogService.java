@@ -22,4 +22,9 @@ public interface IBlogService extends IService<Blog> {
 
     //tim kiem theo category
     List<Blog> findByCategoryId(Long id);
+
+    //bài 12
+    Page<Blog> findAllPage(Pageable pageable);
+
+    List<Blog> findByContentContaining(String keyword);
 }

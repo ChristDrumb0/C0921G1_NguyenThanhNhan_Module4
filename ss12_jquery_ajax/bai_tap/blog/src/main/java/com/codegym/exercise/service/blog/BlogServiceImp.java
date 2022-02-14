@@ -64,4 +64,18 @@ public class BlogServiceImp implements IBlogService {
     public List<Blog> findByCategoryId(Long id) {
         return repository.findByCategory_Id(id);
     }
+
+
+    //bài 12
+    @Override
+    public Page<Blog> findAllPage(Pageable pageable) {
+        return repository.findAll(pageable);
+    }
+
+    @Override
+    public List<Blog> findByContentContaining(String keyword) {
+        return repository.findByContentContaining(keyword);
+    }
+
+
 }
