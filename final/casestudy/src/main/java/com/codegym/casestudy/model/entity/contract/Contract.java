@@ -2,7 +2,7 @@ package com.codegym.casestudy.model.entity.contract;
 
 import com.codegym.casestudy.model.entity.customer.Customer;
 import com.codegym.casestudy.model.entity.employee.Employee;
-import com.codegym.casestudy.model.entity.service.Service;
+import com.codegym.casestudy.model.entity.service.Services;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -26,9 +26,9 @@ public class Contract {
     @JoinColumn(referencedColumnName = "id")
     private Customer customer;
 
-    @ManyToOne(targetEntity = Service.class)
+    @ManyToOne(targetEntity = Services.class)
     @JoinColumn(referencedColumnName = "id")
-    private Service service;
+    private Services services;
 
     @OneToMany(mappedBy = "contract",cascade = CascadeType.ALL)
     private List<ContractDetail> contractDetailList;
@@ -92,12 +92,12 @@ public class Contract {
         this.customer = customer;
     }
 
-    public Service getService() {
-        return service;
+    public Services getServices() {
+        return services;
     }
 
-    public void setService(Service service) {
-        this.service = service;
+    public void setServices(Services services) {
+        this.services = services;
     }
 
     public List<ContractDetail> getContractDetailList() {

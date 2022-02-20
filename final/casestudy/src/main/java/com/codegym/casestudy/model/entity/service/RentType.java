@@ -11,7 +11,7 @@ public class RentType {
     private String rentTypeName;
 
     @OneToMany(mappedBy = "rentType",cascade = CascadeType.ALL)
-    private List<Service> serviceList;
+    private List<Services> servicesList;
 
     public RentType() {
     }
@@ -32,11 +32,11 @@ public class RentType {
         this.rentTypeName = rentTypeName;
     }
 
-    public List<Service> getServiceList() {
-        return serviceList;
+    public List<Services> getServicesList() {
+        return servicesList;
     }
 
-    public void setServiceList(List<Service> serviceList) {
-        this.serviceList = serviceList;
+    public void setServicesList(List<Services> servicesList) {
+        this.servicesList = servicesList;
     }
 }

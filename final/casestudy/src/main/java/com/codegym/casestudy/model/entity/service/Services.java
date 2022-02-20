@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Service {
+public class Services {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,10 +28,10 @@ public class Service {
     @JoinColumn(referencedColumnName = "id")
     private ServiceType serviceType;
 
-    @OneToMany(mappedBy = "service",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "services",cascade = CascadeType.ALL)
     private List<Contract> contractList;
 
-    public Service() {
+    public Services() {
     }
 
     public Long getId() {
