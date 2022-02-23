@@ -31,7 +31,7 @@ public class EmployeeController {
     private IPositionService iPositionService;
 
     @GetMapping
-    public ModelAndView showList(@PageableDefault(value = 4) Pageable pageable) {
+    public ModelAndView showList(@PageableDefault(value = 2) Pageable pageable) {
         ModelAndView mav = new ModelAndView("employee/list");
         String keyword = null;
         mav.addObject("employeeList", iEmlpoyeeService.findAllPage(keyword,pageable));
@@ -40,7 +40,7 @@ public class EmployeeController {
 
     //search
     @GetMapping ("/find")
-    public ModelAndView showList(@PageableDefault(value = 4) Pageable pageable, @RequestParam("keyword") String keyword) {
+    public ModelAndView showList(@PageableDefault(value = 2) Pageable pageable, @RequestParam("keyword") String keyword) {
         ModelAndView mav = new ModelAndView("employee/list");
         mav.addObject("keyword", keyword);
         mav.addObject("employeeList", iEmlpoyeeService.findAllPage(keyword,pageable));
@@ -77,9 +77,9 @@ public class EmployeeController {
     @GetMapping("/create")
     public ModelAndView createForm(ModelAndView modelAndView) {
         modelAndView.setViewName("employee/create");
-        modelAndView.addObject("divisionList", iDivisionService.findAll()); //select-option
-        modelAndView.addObject("positionList", iPositionService.findAll()); //select-option
-        modelAndView.addObject("eduDegreeList", iEducationService.findAll()); //select-option
+        modelAndView.addObject("divisionList", iDivisionService.findAll());
+        modelAndView.addObject("positionList", iPositionService.findAll());
+        modelAndView.addObject("eduDegreeList", iEducationService.findAll());
 
         modelAndView.addObject("empDtoObj", new EmployeeDto());
         return modelAndView;
@@ -115,7 +115,7 @@ public class EmployeeController {
         redirectAttributes.addFlashAttribute("message", "Action has been completed Successfully!");
     }
 
-    //reload data for validate
+    //reload data
     public void addData(EmployeeDto empDtoObj,
                         Model model) {
         model.addAttribute("divisionList", iDivisionService.findAll());

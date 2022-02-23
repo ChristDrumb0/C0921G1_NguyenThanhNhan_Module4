@@ -27,7 +27,7 @@
                 <tr>
                     <td></td>
                     <td>
-                        <h3 style="text-align: center;color: blue">Create new Employee</h3>
+                        <h3 style="text-align: center;color: hotpink">Create new Employee</h3>
                     </td>
                 </tr>
                 <tr>
@@ -122,7 +122,7 @@
                 <tr>
                     <td></td>
                     <td>
-                        <button type="submit" class="btn btn-primary mt-3" oninput="return checkFormEmloyee()">Create</button>
+                        <button type="submit" class="btn btn-dark mt-3" oninput="return checkFormEmloyee()">Create</button>
                     </td>
                 </tr>
             </table>
@@ -137,12 +137,12 @@
             let check = true;
             let date = document.getElementById("dayOfBirth").value;
             if (date == '') {
-                document.getElementById("dayMess").innerText = "Không bỏ trống trường này"
+                document.getElementById("dayMess").innerText = "Must not be blank"
                 check = false;
             }
             let salary = document.getElementById("salary").value;
             if (salary <= 0 || isNaN(salary)) {
-                document.getElementById("salaryMess").innerText = "Vui lòng nhập số dương"
+                document.getElementById("salaryMess").innerText = "must be a positive number"
                 check = false;
             }
             return check;

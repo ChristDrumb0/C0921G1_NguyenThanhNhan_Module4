@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IContractRepo extends JpaRepository<Contract,Long> {
-    @Query(value = "SELECT c FROM Contract c WHERE c.startDate <= current_date AND c.endDate >=current_date", nativeQuery = true)
+    @Query(value = "SELECT * FROM Contract c WHERE c.start_date <= current_date AND c.end_date >=current_date", nativeQuery = true)
     Page<Contract> findCurrentCustomerPage (Pageable pageable);
 }

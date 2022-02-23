@@ -26,6 +26,24 @@ public class Checkdate {
         }
         return true;
     }
+    //Date
+    public static boolean checkAgeCustomer(Date birthDay) {
+        //lấy số tuổi:
+        LocalDate date = birthDay.toLocalDate();
+        int day = date.getDayOfMonth();
+        int month = date.getMonthValue();
+        int year = date.getYear();
+        LocalDate today = LocalDate.now();
+        //tính khoang cach tuoi:
+        int years_gap = today.getYear() - year;
+        int month_gap = today.getMonthValue() - month;
+        int day_gap = today.getDayOfMonth() - day;
+
+        if ( years_gap >100) {
+            return false;
+        }
+        return true;
+    }
 
     public static boolean checkStartDate(Date beginDate) {
         LocalDate date = beginDate.toLocalDate();

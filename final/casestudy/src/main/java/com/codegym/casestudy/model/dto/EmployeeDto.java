@@ -38,13 +38,12 @@ public class EmployeeDto implements Validator {
             message = "Please follow structure: '090xxxxxxx' or '091xxxxxxx' or (84)+90xxxxxxx or (84)+91xxxxxxx  (x: 0-9)")
     private String phone;
 
-//    @Pattern(regexp = "^[a-zA-Z0-9_]+@[a-zA-Z]+(\\.[a-zA-Z]+){1,3}$",
-//            message = "Please follow structure: 'email23@gmail.com'")
+
     @Pattern(regexp = "^\\w{3,}(\\.?\\w+)*@[a-z]{2,7}(.[a-z]{2,5}){1,3}$",
             message = "Please follow structure: 'email123@gmail.com'")
     private String email;
 
-    @NotBlank(message = "do not Blank")
+    @NotBlank(message = "must not be Blank")
     private String address;
 
     private User user;
@@ -167,7 +166,7 @@ public class EmployeeDto implements Validator {
         }
 
 
-        //check duplicate
+//        check duplicate
 //        String inputUserName = employeeDto.user.getUserName();
 //        UserDetails user = myUserDetailService.loadUserByUsername(inputUserName);
 //        if (user != null) {

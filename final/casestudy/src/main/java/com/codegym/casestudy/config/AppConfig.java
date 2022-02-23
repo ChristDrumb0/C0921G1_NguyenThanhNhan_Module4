@@ -44,8 +44,8 @@ public class AppConfig extends WebSecurityConfigurerAdapter {
                 .accessDeniedPage("/403")
 
                 .and()
-                .authorizeRequests().antMatchers("/employee/**").hasAnyRole("MANAGER", "DIRECTOR", "ADMIN")
-                .antMatchers("/customer/**", "/contract/**", "/service/**").hasAnyRole("MANAGER", "DIRECTOR", "STAFF", "ADMIN")
+                .authorizeRequests().antMatchers("/employee/**").hasAnyRole("MANAGER", "ADMIN")
+                .antMatchers("/customer/**", "/contract/**", "/service/**").hasAnyRole("MANAGER", "STAFF", "ADMIN")
                 .anyRequest().authenticated();
 //        remember me:
         http.authorizeRequests().and().rememberMe()

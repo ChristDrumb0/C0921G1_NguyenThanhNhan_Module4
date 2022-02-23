@@ -56,9 +56,9 @@
 </form>
 
 <!---->
-<div class="row" th:unless="${employeeList.isEmpty()}" style="text-align: center">
-    <div style="text-align: center">
-        <table class="table table-bordered table-striped" style="max-width: 100%;overflow-x: scroll;display: inline-block;text-align: center">
+<div th:unless="${employeeList.isEmpty()}" style="text-align: center">
+
+        <table class="table table-bordered table-striped" style="max-width: 100%;overflow-x: scroll;text-align: center">
             <thead>
             <tr>`
                 <th>No</th>
@@ -70,7 +70,7 @@
                 <th>Phone Number</th>
                 <th>UserName</th>
                 <th>Division</th>
-                <th>Diploma</th>
+                <th>Education</th>
                 <th>Position</th>
                 <th>Salary</th>
                 <th>Address</th>
@@ -115,7 +115,7 @@
             </a>
         </div>
 
-    </div>
+
 
 </div>
 
@@ -132,8 +132,8 @@
             <form action="/employee/delete">
                 <input type="hidden" name="id" id="idObjDel">
                 <div class="modal-body">
-                    Are you sure you want to delete?
-                    <span style="color:red;" id="nameObjDel"></span>?
+                    Are you sure you want to delete
+                    <span style="color:hotpink;" id="nameObjDel"></span>?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
